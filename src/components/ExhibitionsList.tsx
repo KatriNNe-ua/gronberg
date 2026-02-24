@@ -7,8 +7,7 @@ type Props = {
   isPast: boolean;
 };
 
-
-function ExhibitionsList({ isPast }:Props): ReactElement {
+function ExhibitionsList({ isPast }: Props): ReactElement {
   const { data, error, isLoading } = useGetExhibitionsQuery();
 
   let content;
@@ -40,10 +39,10 @@ function ExhibitionsList({ isPast }:Props): ReactElement {
                 <span>{new Date(item.date).getFullYear()}</span>
               </div>
               <h3 className="exhibitions__title">
-                <a href="#">
+                <Link to={frontRoutes.navigator.exhibitions.item(item.id)}>
                   {item.title}
                   <span> {item.titleRed}</span>
-                </a>
+                </Link>
               </h3>
               <div className="exhibitions__description">
                 <p>{item.description}</p>

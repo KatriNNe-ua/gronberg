@@ -9,7 +9,7 @@ function HeroSection(): ReactElement {
      <div className="hero__container">
        <div className="hero__content">
          <div className="hero__inner">
-           <h1 className="hero__title headline">Jacob Grønberg</h1>
+           <h1 className="hero__title headline">JG acob Grønberg</h1>
            <h2 className="hero__subtitle">
              <span>Photographer</span>
              <span>& Visual artist</span>
@@ -18,7 +18,7 @@ function HeroSection(): ReactElement {
          <figure className="hero__author">
            <div className="hero__photo">
              <img
-               src="images/home/hero/jacob.webp"
+               src="/images/home/hero/jacob.webp"
                alt="img"
              />
            </div>
@@ -33,7 +33,7 @@ function HeroSection(): ReactElement {
        <div className="hero__media">
          <div className="hero__img">
            <img
-             src="images/home/hero/main-image.webp"
+             src="/images/home/hero/main-image.webp"
              alt="img"
            />
          </div>

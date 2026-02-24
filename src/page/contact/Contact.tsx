@@ -42,7 +42,7 @@ function Contact(): ReactElement {
     <section className="main__contact contact">
       <div className="contact__container">
         <div className="contact__img">
-          <img src="images/home/hero/main-image.webp" alt="img" />
+          <img src="/images/home/hero/main-image.webp" alt="img" />
         </div>
         <form className="contact__form" onSubmit={handleSubmit(submit)}>
           <h1 className="contact__title headline">Contact</h1>
