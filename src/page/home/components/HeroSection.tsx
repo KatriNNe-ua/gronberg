@@ -9,7 +9,7 @@ function HeroSection(): ReactElement {
      <div className="hero__container">
        <div className="hero__content">
          <div className="hero__inner">
-           <h1 className="hero__title headline">JG acob Grønberg</h1>
+           <h1 className="hero__title headline">Jacob Grønberg</h1>
            <h2 className="hero__subtitle">
              <span>Photographer</span>
              <span>& Visual artist</span>
