@@ -1,0 +1,80 @@
+@use "./mixins" as m;
+
+.contact {
+	// .contact__container
+	&__container {
+		@include m.adaptiveValue("padding-top", 80, 30);
+		@include m.adaptiveValue("padding-bottom", 96, 30);
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		position: relative;
+		@media (max-width: m.toEm(700)) {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	// .contact__img
+	&__img {
+		@media (max-width: m.toEm(700)) {
+			display: none;
+		}
+	}
+	// .contact__form
+	&__form {
+	}
+	// .contact__title
+	&__title {
+		margin-left: -15%;
+		&:not(:last-child) {
+			@include m.adaptiveValue("margin-bottom", 30, 20);
+		}
+		@media (max-width: m.toEm(700)) {
+			margin-left: 0;
+			text-align: center;
+		}
+	}
+	// .contact__wrapper
+	&__wrapper {
+		padding-left: m.toRem(20);
+		max-width: m.toRem(600);
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		gap: m.toRem(30);
+		@media (max-width: m.toEm(700)) {
+			padding-left: 0;
+		}
+	}
+	// .contact__item
+	&__item {
+		display: flex;
+		flex-direction: column;
+		gap: m.toRem(15);
+	}
+	// .contact__label
+	& label {
+		@include m.adaptiveValue("font-size", 26, 20);
+	}
+	// .contact__input
+	& input, & textarea {
+		border: m.toRem(1) solid var(--background-primary);
+		border-radius: m.toRem(8);
+		min-height: m.toRem(40);
+		padding: m.toRem(10);
+		width: 100%;
+	}
+	& textarea {
+		resize: vertical;
+		height: m.toRem(100);
+		max-height: m.toRem(200);
+		@media (max-width: m.toEm(700)) {
+			max-height: none;
+		}
+	}
+	& .error-message{
+		color: var(--background-primary);
+		font-size: m.toRem(12);
+		letter-spacing: m.toRem(1.1);
+
+	}
+}

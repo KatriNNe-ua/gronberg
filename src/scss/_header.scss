@@ -1,0 +1,242 @@
+@use "sass:math";
+@use "./mixins" as m;
+
+.header {
+	padding-inline: m.toRem(50);
+	@include m.adaptiveValue("min-height", 130, 60);
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: m.toRem(15);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 50;
+	transition: all 0.3s;
+	@media (max-width: m.toEm(1430)) {
+		padding-inline: m.toRem(15);
+	}
+
+	&.scroll,
+	&.scroll::before {
+		@include m.adaptiveValue("min-height", 80, 60);
+	}
+
+	&::before {
+		content: "";
+		background-color: var(--bg-header);
+		position: absolute;
+		width: 100%;
+		@include m.adaptiveValue("min-height", 130, 60);
+		top: 0;
+		left: 0;
+		z-index: 4;
+		transition: all 0.3s;
+		.menu-open & {
+			width: 99%;
+		}
+	}
+
+	// .header__logo
+	&__logo {
+		font-size: m.toRem(24);
+		line-height: 1.1;
+		text-transform: uppercase;
+		position: relative;
+		z-index: 4;
+	}
+
+	// .header__back
+	&__back {
+		font-size: m.toRem(18);
+		line-height: 1.2;
+		display: flex;
+		gap: m.toRem(12);
+		align-items: center;
+		z-index: 4;
+		transition: all 0.3s;
+		@media (any-hover: hover) {
+			&:hover {
+				color: var(--background-primary);
+				path {
+					stroke: var(--background-primary);
+				}
+			}
+		}
+		path {
+			transition: all 0.3s;
+		}
+
+		@media (max-width: m.toEm(767.98)) {
+			font-size: m.toRem(14);
+		}
+			@media (max-width: m.toEm(500)) {
+			font-size: 0;
+			gap: 0;
+		}
+
+		.menu-open &{
+			display: none;
+		}
+	}
+
+	// .header__link
+	&__link {
+		transition: color 0.3s;
+		@media (any-hover: hover) {
+			&:hover {
+				color: var(--background-primary);
+			}
+		}
+	}
+	// .header__menu
+	&__menu {
+	}
+}
+.menu {
+	// .menu__open
+	&__icon {
+		position: relative;
+		width: m.toRem(50);
+		height: m.toRem(23);
+		position: relative;
+		z-index: 4;
+
+		span,
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			height: m.toRem(1);
+			background-color: var(--text-default);
+			right: 0;
+			transition: all 0.3s;
+		}
+		&::before {
+			width: m.toRem(50);
+			top: 0;
+		}
+
+		span {
+
+			width: m.toRem(35);
+			top: 50%;
+		}
+
+		&::after {
+			width: m.toRem(45);
+			bottom: 0;
+		}
+
+		&:hover {
+			&::before,
+			span,
+			&::after {
+				background-color: var(--background-primary);
+			}
+		}
+
+		small {
+			border: m.toRem(1) solid var(--background-primary);
+			border-radius: 50%;
+			position: absolute;
+			background-color: var(--bg-header);
+			top: 50%;
+			left: 50%;
+			opacity: 0;
+			width: 0;
+			aspect-ratio: 1;
+			z-index: -1;
+			transform: translate(-50%, -50%);
+			@media (max-width: m.toEm(400)) {
+				display: none;
+			}
+		}
+		.menu-open & small {
+			opacity: 1;
+			width: m.toRem(200);
+		}
+
+		.menu-open & span {
+			width: 0;
+		}
+		.menu-open &::before {
+			transform: rotate(45deg);
+			top: 50%;
+		}
+		.menu-open &::after {
+			transform: rotate(-45deg);
+			width: m.toRem(50);
+			bottom: 50%;
+		}
+	}
+	// .menu__body
+	&__body {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		display: flex;
+		flex-direction: column;
+		overflow: auto;
+		background-color: var(--text-inverse);
+		@include m.adaptiveValue("padding-top", 135, 90);
+		@include m.adaptiveValue("gap", 140, 60);
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity 0.3s;
+		.menu-open & {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+	// .menu__list
+	&__list {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+		align-items: center;
+		justify-content: center;
+		@include m.adaptiveValue("gap", 40, 20);
+		counter-reset: item;
+	}
+	// .menu__item
+	&__item {
+		display: flex;
+		@include m.adaptiveValue("gap", 50, 20);
+		align-items: center;
+		&::before {
+			content: counter(item, decimal-leading-zero);
+			counter-increment: item;
+			@include m.adaptiveValue("font-size", 30, 15);
+			line-height: 1.2;
+			text-transform: uppercase;
+			color: var(--background-primary);
+		}
+	}
+	// .menu__link
+	&__link {
+		@include m.adaptiveValue("font-size", 100, 40);
+		line-height: 1.1;
+		text-transform: uppercase;
+		transition: color 0.3s;
+		&--active{
+			color: var(--background-primary);
+		}
+
+		@media (any-hover: hover) {
+			&:hover {
+				color: var(--background-primary);
+			}
+		}
+
+
+	}
+	// .menu__social
+	&__social {
+		@include m.adaptiveValue("padding-bottom", 40, 20);
+		margin: 0 auto;
+	}
+}

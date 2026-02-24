@@ -1,0 +1,26 @@
+@use "./mixins" as m;
+
+
+.together {
+	@include m.adaptiveValue("padding-block", 229, 60);
+	// .together__container
+	&__container {
+		
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		@include m.adaptiveValue("gap", 99, 30);
+	}
+	// .together__link
+	&__link {
+
+	}
+	// .together__content
+	&__content {
+		flex-shrink: 0
+	}
+	// .together__title
+	&__title {
+		@include m.adaptiveValue("font-size", 100, 26);
+	}
+}

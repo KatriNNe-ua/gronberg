@@ -1,0 +1,99 @@
+@use "./mixins" as m;
+
+.services {
+	// .services__container
+	&__container {
+		// @include m.adaptiveValue("padding-top", 159, 40);
+		// @include m.adaptiveValue("padding-bottom", 112, 20);
+		@include m.adaptiveValue("padding-right", 101, 15);
+		display: flex;
+		justify-content: end;
+		@include m.adaptiveValue("gap", 163, 20);
+		position: relative;
+		@media (max-width: m.toEm(600)) {
+			flex-direction: column;
+			padding-right: m.toRem(15);
+		}
+	}
+	// .services__label
+	&__label {
+		position: sticky;
+		align-self: flex-start;
+		line-height: 1.6;
+		padding-left: m.toRem(27);
+		@include m.adaptiveValue("top", 130, 60);
+		@media (max-width: m.toEm(600)) {
+			position: relative;
+			top: 0;
+		}
+		
+		&::before {
+			content: "";
+			width: m.toRem(15);
+			height: m.toRem(1);
+			background-color: var(--text-default);
+
+			position: absolute;
+			left: m.toRem(0);
+			top: 50%;
+		}
+	}
+	// .services__list
+	&__list {
+		max-width: m.toRem(800);
+		display: flex;
+		flex-direction: column;
+		@include m.adaptiveValue("gap", 50, 20);
+		counter-reset: item;
+		@media (max-width: m.toEm(600)) {
+			max-width: 100%;
+		}
+	}
+	// .services__item
+	&__item {
+		display: flex;
+		justify-content: flex-start;
+		@include m.adaptiveValue("gap", 80, 30);
+		&:not(:last-child) {
+			@include m.adaptiveValue("padding-bottom", 50, 20);
+			border-bottom: m.toRem(1) solid var(--border-default);
+		}
+		&::before {
+			content: counter(item, decimal-leading-zero);
+			counter-increment: item;
+			@include m.adaptiveValue("font-size", 30, 22);
+			line-height: 1.2;
+			text-transform: uppercase;
+			color: var(--background-primary);
+		}
+	}
+	// .services__link
+	&__link {
+		@media (any-hover: hover) {
+			&:hover .services__title {
+				color: var(--background-primary);
+			}
+		}
+	}
+	// .services__title
+	&__title {
+		@include m.adaptiveValue("font-size", 30, 22);
+		line-height: 1.2;
+		text-transform: uppercase;
+		transition: color 0.3s;
+		&:not(:last-child) {
+			margin-bottom: m.toRem(20);
+		}
+	}
+	// .services__text
+	&__text {
+		font-size: m.toRem(18);
+		line-height: 1.6;
+		p:not(:last-child) {
+			margin-bottom: m.toRem(4);
+		}
+		@media (max-width: m.toEm(600)) {
+			font-size: m.toRem(16);
+		}
+	}
+}

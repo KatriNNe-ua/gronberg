@@ -1,0 +1,53 @@
+@use "./mixins" as m;
+
+.latest-work {
+	// .latest-work__container
+	&__container {
+	}
+	// .latest-work__head
+	&__head {
+		&:not(:last-child) {
+			@include m.adaptiveValue("margin-bottom", 128, 40);
+		}
+	}
+	// .latest-work__content
+	&__content {
+		@media (max-width: m.toEm(600)) {
+			display: flex;
+			gap: m.toRem(20);
+			overflow: auto;
+			padding-bottom: m.toRem(15);
+
+			scrollbar-color: #db574d #f0f0f0;
+			// WebKit
+
+			&::-webkit-scrollbar-track {
+				background: #f0f0f0;
+			}
+			&::-webkit-scrollbar-thumb {
+				background: #db574d;
+			}
+		}
+	}
+	// .latest-work__column
+	& .projects__column {
+		&:first-child .projects__item:nth-child(even) {
+			display: flex;
+			justify-content: center;
+		}
+		&:last-child .projects__item:nth-child(odd) {
+			display: flex;
+			justify-content: end;
+		}
+		@media (max-width: m.toEm(600)) {
+			flex-direction: row;
+			gap: m.toRem(20);
+		}
+	}
+	// .latest-work__item
+	& .projects__item {
+		@media (max-width: m.toEm(600)) {
+			flex: 1 0 m.toRem(250);
+		}
+	}
+}
