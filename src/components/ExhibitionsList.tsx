@@ -5,7 +5,7 @@ import { frontRoutes } from "../routes/frontRoutes";
 
 type Props = {
   isPast: boolean;
-};
+};  
 
 function ExhibitionsList({ isPast }: Props): ReactElement {
   const { data, error, isLoading } = useGetExhibitionsQuery();
