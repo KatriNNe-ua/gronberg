@@ -15,7 +15,7 @@ function HeroSection(): ReactElement {
              <span>& Visual artist</span>
            </h2>
          </div>
-         <figure className="hero__author">
+         <figure className="hero__author"> 
            <div className="hero__photo">
              <img
                src="/images/home/hero/jacob.webp"
