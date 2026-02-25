@@ -16,7 +16,7 @@
 			display: flex;
 			gap: m.toRem(20);
 			overflow: auto;
-			padding-bottom: m.toRem(15);
+			padding-bottom: m.toRem(20);
 
 			scrollbar-color: #db574d #f0f0f0;
 			// WebKit
@@ -26,6 +26,10 @@
 			}
 			&::-webkit-scrollbar-thumb {
 				background: #db574d;
+			}
+			&.projects{
+					align-items: end;
+					gap: m.toRem(20);
 			}
 		}
 	}

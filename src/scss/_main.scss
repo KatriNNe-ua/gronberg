@@ -111,7 +111,6 @@ body {
 //------------------------------------------------------
 .title {
 	@include m.adaptiveValue("font-size", 100, 40);
-	font-size: m.toRem(100);
 	line-height: 1.1;
 	text-transform: uppercase;
 	color: var(--text-default);
